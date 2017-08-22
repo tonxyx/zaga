@@ -51,7 +51,7 @@ class ViewsPanel extends Panel
     {
         $url = $this->getUrl();
         $count = count($this->data);
-        return "<div class=\"yii-debug-toolbar-block\"><a href=\"$url\">ビュー数 <span class=\"label\">$count</span></a></div>";
+        return "<div class=\"yii-debug-toolbar__block\"><a href=\"$url\">Views <span class=\"yii-debug-toolbar__label yii-debug-toolbar__label_info\">$count</span></a></div>";
     }
 
     /**
@@ -81,7 +81,7 @@ class ViewsPanel extends Panel
    このメソッドが何も返さなかった場合には、パネルは表示されません。
 3. データファイルからのデータは `$this->data` にロードされます。
    ツールバーの場合は、これは常に最新のデータを表します。
-   デバッガの場合は、このプロパティが以前のデータファイルから読み出されるようにセットされることもあります。
+   デバッガの場合は、このプロパティを以前のどのデータファイルからでも読み出すことが出来ます。
 4. ツールバーはその内容を `getSummary` から取得します。
    そこではレンダリングされたビューの数を表示します。
    デバッガは同じ目的のために `getDetail` を使用します。

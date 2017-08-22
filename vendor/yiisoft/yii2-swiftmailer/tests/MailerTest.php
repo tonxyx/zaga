@@ -7,11 +7,6 @@ use yii\swiftmailer\Mailer;
 
 Yii::setAlias('@yii/swiftmailer', __DIR__ . '/../../../../extensions/swiftmailer');
 
-/**
- * @group vendor
- * @group mail
- * @group swiftmailer
- */
 class MailerTest extends TestCase
 {
     public function setUp()
@@ -39,7 +34,7 @@ class MailerTest extends TestCase
     {
         $mailer = new Mailer();
 
-        $transport = \Swift_MailTransport::newInstance();
+        $transport = new \Swift_SendmailTransport();
         $mailer->setTransport($transport);
         $this->assertEquals($transport, $mailer->getTransport(), 'Unable to setup transport!');
     }

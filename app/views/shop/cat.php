@@ -7,16 +7,33 @@ $this->title = $cat->seo('title', $cat->model->title);
 $this->params['breadcrumbs'][] = ['label' => 'Shop', 'url' => ['shop/index']];
 $this->params['breadcrumbs'][] = $cat->model->title;
 ?>
-<h1><?= $cat->seo('h1', $cat->title) ?></h1>
+<h1><?= $cat->model->title ?></h1>
 <br/>
 
 <div class="row">
     <div class="col-md-8">
         <?php if(count($items)) : ?>
             <br/>
-            <?php foreach($items as $item) : ?>
-                <?= $this->render('_item', ['item' => $item]) ?>
-            <?php endforeach; ?>
+<?php switch ($cat->slug) {
+case 'motorne-pile':
+	$view = 'motorne_pile';
+	break;
+case 'elektricne-pile':
+	$view = 'elektricne_pile';
+	break;
+case 'akumulatorske-pile':
+	$view = 'akumulatorske_pile';
+	break;
+case 'motorne-kose':
+	$view = 'motorne_kose';
+	break;
+default:
+	$view = '_item';
+	break;
+}
+		foreach($items as $item) { ?>
+                    <?= $this->render($view, ['item' => $item]) ?>
+		<?php } ?>
         <?php else : ?>
             <p>Category is empty</p>
         <?php endif; ?>

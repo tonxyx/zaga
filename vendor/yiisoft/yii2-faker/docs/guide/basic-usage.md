@@ -30,7 +30,7 @@ Testing
 -----------
 
 Define a `tests` alias in your console config. For example, for the `basic` project template, this should be added
-to the `console.php` configuration: `Yii::setAlias('tests', __DIR__ . '/../tests');`
+to the `console.php` configuration: `Yii::setAlias('tests', dirname(__DIR__) . '/tests/codeception');`
 To start using this command you need to be familiar (read guide) with the [Faker](https://github.com/fzaninotto/Faker) library and
 generate fixture template files, according to the given format:
 
@@ -75,7 +75,7 @@ will be created under the fixture path (`@tests/unit/fixtures` folder).
 php yii fixture/generate-all
 ```
 
-This command will generate fixtures for all template files that are stored under the template path and 
+This command will generate fixtures for all template files that are stored under the template path and
 store fixtures under the fixtures path with file names same as templates names.
 You can specify how many fixtures per file you need by the `--count` option. In the code below we generate
 all fixtures and in each file there will be 3 rows (fixtures).
@@ -87,7 +87,7 @@ You can specify different options of this command:
 
 ```
 # generate fixtures in russian language
-php yii fixture/generate users --count=5 --language='ru_RU'
+php yii fixture/generate users --count=5 --language="ru_RU"
 
 # read templates from the other path
 php yii fixture/generate-all --templatePath='@app/path/to/my/custom/templates'
@@ -131,6 +131,22 @@ You can use it by adding it to the `$providers` property of the current command.
         'providers' => [
             'app\tests\unit\faker\providers\Book',
         ],
+    ],
+]
+```
+
+
+Yii 2 Advanced Template
+-----------------------
+
+If you want to run faker in the Yii 2 advanced template, you need to set `templatePath` and `fixtureDataPath`. For example if you want to setup common fixtures, use the following config in `console/config/main.php`:
+
+```php
+'controllerMap' => [
+    'fixture' => [
+        'class' => 'yii\faker\FixtureController',
+        'templatePath' => '@common/tests/templates/fixtures',
+        'fixtureDataPath' => '@common/tests/fixtures/data',
     ],
 ]
 ```

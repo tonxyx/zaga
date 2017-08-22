@@ -54,7 +54,7 @@ URL マネージャで `enableStrictParsing` オプションを使っている�
 ],
 ```
 
-> Note|注意: デバッガは各リクエストに関する情報を `@runtime/debug` ディレクトリに保存します。
+> Note: デバッガは各リクエストに関する情報を `@runtime/debug` ディレクトリに保存します。
 > デバッガを使用するのに問題が生じたとき、例えば、デバッガを使おうとするとおかしなエラーメッセージが出たり、ツールバーが表示されなかったり、リクエストの情報が何も表示されなかったりしたときは、ウェブサーバがこのディレクトリとその中に置かれるファイルに対して十分なアクセス権限を持っているかどうかを確認してください。
 
 
@@ -84,5 +84,139 @@ return [
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 ```
 
-> Note|注意: デバッグモードはパフォーマンスに著しい悪影響を及ぼし得ますので、本番環境では必ずデバッグモードを無効にしてください。
+> Note: デバッグモードはパフォーマンスに著しい悪影響を及ぼし得ますので、本番環境では必ずデバッグモードを無効にしてください。
 更に、デバッグモードは公開すべきでない情報をエンドユーザに曝露することがあり得ます。
+
+### データベースパネルを構成する
+
+データベースパネルのデフォルトの並べ替えとフィルタリングを次のようにして構成することが出来ます。
+
+```php
+$config['modules']['debug'] = [
+    'class' => 'yii\debug\Module',
+    'panels' => [
+        'db' => [
+            'class' => 'yii\debug\panels\DbPanel',
+            'defaultOrder' => [
+                'seq' => SORT_ASC
+            ],
+            'defaultFilter' => [
+                'type' => 'SELECT'
+            ]
+        ],
+    ],
+];
+```
+
+### IDE で開くための追加の設定
+
+デバッグトレースから直接にファイルを開くことが出来たら素敵だと思いませんか？
+
+なんと、出来るんです。
+ほんの少し設定をすれば、準備完了です。
+
+
+#### Windows
+
+##### 1) open_phpstorm.js という WScript ファイルを作成する
+次の内容を持つ `C:\Program Files (x86)\JetBrains\open_phpstorm.js` と言うファイル (PhpStorm の場合の例) を作ります。
+
+```js
+
+var settings = {
+	// 64-bit Windows で実行する場合は 'true' (引用符無し) に設定。そうでなければ 'false' (引用符無し)
+	x64: true,
+
+	// PhpStorm がインストールされたフォルダ名に設定 (例: 'PhpStorm')
+	folder_name: 'PhpStorm 2016.2.1',
+
+	// PhpStorm のインスタンスの実行に切り替えたときに表示されるウィンドウのタイトル ('-' 以降のテキストのみ) を設定
+	window_title: 'PhpStorm 2016.2.1',
+
+	// ファイルがネットワーク共有にマップされており、パスが一致しない場合に
+	// 例えば、/var/www を Y:/ にマップ
+	projects_basepath: '',
+	projects_path_alias: ''
+};
+
+
+// 何をしているか知っている場合以外は、ここから下の行は、少しも変えないこと
+var	url = WScript.Arguments(0),
+	match = /^ide:\/\/(?:.+)file:\/\/(.+)&line=(\d+)$/.exec(url),
+	project = '',
+	editor = '"C:\\' + (settings.x64 ? 'Program Files' : 'Program Files (x86)') + '\\JetBrains\\' + settings.folder_name + '\\bin\\PhpStorm.exe"';
+
+if (match) {
+
+	var	shell = new ActiveXObject('WScript.Shell'),
+		file_system = new ActiveXObject('Scripting.FileSystemObject'),
+		file = decodeURIComponent(match[1]).replace(/\+/g, ' '),
+		search_path = file.replace(/\//g, '\\');
+
+	if (settings.projects_basepath != '' && settings.projects_path_alias != '') {
+		file = file.replace(new RegExp('^' + settings.projects_basepath), settings.projects_path_alias);
+	}
+
+	while (search_path.lastIndexOf('\\') != -1) {
+		search_path = search_path.substring(0, search_path.lastIndexOf('\\'));
+
+		if(file_system.FileExists(search_path+'\\.idea\\.name')) {
+			project = search_path;
+			break;
+		}
+	}
+
+	if (project != '') {
+		editor += ' "%project%"';
+	}
+
+	editor += ' --line %line% "%file%"';
+
+	var command = editor.replace(/%line%/g, match[2])
+						.replace(/%file%/g, file)
+						.replace(/%project%/g, project)
+						.replace(/\//g, '\\');
+
+	shell.Exec(command);
+	shell.AppActivate(settings.window_title);
+}
+```
+
+##### 2) レジストリファイルを作成して実行する
+
+次の内容を持つレジストリファイル `C:\Program Files (x86)\JetBrains\open_phpstorm.reg` (example for PhpStorm)
+を作成して実行します。パスが正しいことを確認して下さい。
+
+```windows.reg
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\ide]
+@="\"URL:ide Protocol\""
+"URL Protocol"=""
+
+[HKEY_CLASSES_ROOT\ide\shell\open\command]
+@="wscript \"C:\\Program Files (x86)\\JetBrains\\open_phpstorm.js\" %1"
+```
+
+これで、ブラウザで ide:// プロトコルを使うことが出来るようになります。
+
+そのようなリンクをクリックすると、IDE が自動的にファイルを開いて、対応する行にカーソルを移動します。
+
+##### リンクを無効化する
+
+トレースのための IDE リンクはデフォルトで作成されます。
+テキスト行だけを表示したい場合は、プロパティ `yii\debug\Module::traceLink` を `false` に設定しなければなりません。
+
+```php
+<?php
+
+...
+'modules' => [
+    'debug' => [
+        'class' => 'yii\debug\Module',
+        'traceLink' => false
+    ]
+]
+
+...
+```
