@@ -10,17 +10,17 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
 function renderNode($node){
     if(!count($node->children)){
-        $html = '<li>'.Html::a($node->title, ['/articles/cat', 'slug' => $node->slug]).'</li>';
+        $html = '<li class="list-group-item">'.Html::a($node->title, ['/articles/cat', 'slug' => $node->slug]).'</li>';
     } else {
         $html = '<li>'.$node->title.'</li>';
-        $html .= '<ul>';
+        $html .= '<ul class="list-group">';
         foreach($node->children as $child) $html .= renderNode($child);
         $html .= '</ul>';
     }
     return $html;
 }
 ?>
-<h1><?= $page->seo('h1', $page->title) ?></h1>
+<h1><?php //echo $page->seo('h1', $page->title); ?></h1>
 
 <br/>
 <ul>

@@ -6,7 +6,7 @@ use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
 $this->title = $item->seo('title', $item->model->title);
-$this->params['breadcrumbs'][] = ['label' => 'Shop', 'url' => ['shop/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Katalog', 'url' => ['shop/index']];
 $this->params['breadcrumbs'][] = ['label' => $item->cat->title, 'url' => ['shop/cat', 'slug' => $item->cat->slug]];
 $this->params['breadcrumbs'][] = $item->model->title;
 
@@ -37,27 +37,34 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
         <div class="row">
             <div class="col-md-8">
                 <h2>
-                    <span class="label label-warning"><?= $item->price ?> HRK</span>
-                    <?php if($item->discount) : ?>
-                        <del class="small"><?= $item->oldPrice ?></del>
-                    <?php endif; ?>
+                    <span class="label label-warning"><?php echo number_format($item->price, 2, ',', '.'); ?> HRK</span>
+                    <?php if($item->discount) { ?>
+                        <del class="small"><?php echo number_format($item->oldPrice, 2, ',', '.'); ?></del>
+                    <?php } ?>
                 </h2>
-                <h3>Characteristics</h3>
-                <span class="text-muted">Tip:</span> <?= $item->data->tip ?>
-                <br/>
-                <span class="text-muted">Zapremnina:</span> <?= $item->data->zapremnina ?>
-                <br/>
-                <span class="text-muted">Duzina vodilice:</span> <?= $item->data->duzinavodilice ?>
-                <br/>
-                <span class="text-muted">Availability:</span> <?= $item->available ? 'Dostupno' : 'Na upit' ?>
-                <?php if(!empty($item->data->features)) : ?>
+                <h3>Karakteristike</h3>
+                <?php foreach ($category->fields as $field) {
+                  if (isset($item->data->{$field->name})) { ?>
+                    <span class="text-muted"><?php echo $field->title; ?>:</span>
+                    <?php if (is_array($item->data->{$field->name})) {
+                      foreach ($item->data->{$field->name} as $key => $value) {
+                        echo $value  . ', ';
+                      }
+                    } else {
+                      echo $item->data->{$field->name};
+                    } ?>
+                    <br/>
+                  <?php }
+                }
+
+                if(!empty($item->data->features)) { ?>
                     <br/>
                     <span class="text-muted">Features:</span> <?= implode(', ', $item->data->features) ?>
-                <?php endif; ?>
+                <?php } ?>
             </div>
             <div class="col-md-4">
                 <?php if(Yii::$app->request->get(AddToCartForm::SUCCESS_VAR)) : ?>
-                    <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Added to cart</h4>
+                    <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Dodano za upit</h4>
                 <?php elseif($item->available) : ?>
                     <br/>
                     <div class="well well-sm">
@@ -66,12 +73,14 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
                             <?= $form->field($addToCartForm, 'color')->dropDownList($colors) ?>
                         <?php endif; ?>
                         <?= $form->field($addToCartForm, 'count') ?>
-                        <?= Html::submitButton('Add to cart', ['class' => 'btn btn-warning']) ?>
+                        <?= Html::submitButton('Dodaj za upit', ['class' => 'btn btn-warning']) ?>
                         <?php ActiveForm::end(); ?>
                     </div>
                 <?php endif; ?>
             </div>
         </div>
+
+        <br />
         <?= $item->description ?>
     </div>
 </div>

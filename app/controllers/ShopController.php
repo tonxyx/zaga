@@ -53,11 +53,17 @@ class ShopController extends \yii\web\Controller
     {
         $item = Catalog::get($slug);
         if(!$item){
-            throw new NotFoundHttpException('Item not found.');
+          throw new NotFoundHttpException('Item not found.');
+        }
+
+        $category = Catalog::cat($item->category_id);
+        if(!$item){
+          throw new NotFoundHttpException('Category not found.');
         }
 
         return $this->render('view', [
             'item' => $item,
+            'category' => $category,
             'addToCartForm' => new \app\models\AddToCartForm()
         ]);
     }

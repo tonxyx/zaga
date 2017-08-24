@@ -23,62 +23,23 @@ $this->title = $page->seo('title', $page->model->title);
 <br/>
 <hr/>
 
-<!-- <div class="text-center">
-    <h2>Last photos</h2>
-    <br/>
-    <?php foreach(Gallery::last(6) as $photo) : ?>
-        <?= $photo->box(180, 135) ?>
-    <?php endforeach;?>
-    <?php Gallery::plugin() ?>
-</div>
-
-<br/>
-<hr/> -->
-
 <div class="text-center">
-    <h2>Last news</h2>
-    <blockquote class="text-left">
-        <?php echo Html::a(News::last()->title, ['news/view', 'slug' => News::last()->slug]) ?>
-        <br/>
-        <?php echo News::last()->short ?>
-        <img src="<?php echo News::last()->image; ?>" height="200px" width="200px" />
-    </blockquote>
-</div>
-
-<br/>
-<hr/>
-
-
-<!-- <div class="text-center">
-    <h2>Last article from category #1</h2>
-    <br/>
-    <div class="row text-left">
-        <?php $article = Article::last(1, ['category_id' => 1]); ?>
-        <div class="col-md-2">
-            <?= Html::img($article->thumb(160, 120)) ?>
-        </div>
-        <div class="col-md-10 text-left">
-            <?= Html::a($article->title, ['articles/view', 'slug' => $article->slug]) ?>
-            <br/>
-            <?= $article->short ?>
-        </div>
-    </div>
-</div>
-
-<br/>
-<hr/> -->
-
-<!-- <div class="text-center">
-    <h2>Last reviews</h2>
-    <br/>
-    <div class="row text-left">
-        <?php foreach(Guestbook::last(2) as $post) : ?>
-            <div class="col-md-6">
-                <b><?= $post->name ?></b>
-                <p class="text-muted"><?= $post->text ?></p>
+    <h2>Novosti</h2>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="row">
+          <?php foreach (News::last(3) as $news) { ?>
+            <div class="col-sm-4">
+              <?php echo Html::a($news->title, ['news/view', 'slug' => $news->slug]) ?>
+              <br />
+              <img src="<?php echo $news->image; ?>" height="150px" width="200px" />
+              <br />
+              <?php echo $news->short ?>
             </div>
-        <?php endforeach;?>
+          <?php } ?>
+        </div>
+      </div>
     </div>
-</div> -->
+</div>
 
-<!-- <br/> -->
+<br/>
