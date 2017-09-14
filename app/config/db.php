@@ -3,8 +3,8 @@
 return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=zaga_krk',
-    'username' => 'root',
-    'password' => 'password',
+    'username' => 'racki',
+    'password' => 'rEmMXvU3M9dczEZ',
     'charset' => 'utf8',
     'tablePrefix' => '',
     'enableSchemaCache' => true,
