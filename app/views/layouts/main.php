@@ -49,12 +49,12 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
         </nav>
     </header>
     <main>
-        <?php if($this->context->id != 'site') : ?>
+        <?php /* if($this->context->id != 'site') : ?>
             <br/>
-            <?= Breadcrumbs::widget([
+            <?php echo Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ])?>
-        <?php endif; ?>
+        <?php endif; */ ?>
         <?= $content ?>
         <div class="push"></div>
     </main>
