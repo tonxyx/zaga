@@ -7,14 +7,17 @@
     <div class="col-md-10">
         <p><?= Html::a($item->title, ['shop/view', 'slug' => $item->slug]) ?></p>
         <p>
-          <?php $counter = 0; foreach ($category->fields as $field) {
-            if ($counter == 3) break; ?>
-            <span class="text-muted"><?php echo $field->title; ?>:</span> <?= $item->data->{$field->name} ?>
-            <br/>
-          <?php $counter++; }
+          <?php if (isset($category) && $category) {
+            $counter = 0;
+            foreach ($category->fields as $field) {
+              if ($counter == 3) break; ?>
+              <span class="text-muted"><?php echo $field->title; ?>:</span> <?= $item->data->{$field->name} ?>
+              <br/>
+            <?php $counter++; }
 
-          if(!empty($item->data->features)) { ?>
-            <span class="text-muted">Ostalo:</span> <?php echo implode(', ', $item->data->features);
+            if(!empty($item->data->features)) { ?>
+              <span class="text-muted">Ostalo:</span> <?php echo implode(', ', $item->data->features);
+            }
           } ?>
         </p>
         <h3>

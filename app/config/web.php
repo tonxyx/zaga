@@ -18,7 +18,8 @@ $config = [
             'cookieValidationKey' => 'askjhdncois7d89oijrlkwekrlwnklajlskc',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            // 'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\DummyCache',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

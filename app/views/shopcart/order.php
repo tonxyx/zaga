@@ -10,10 +10,10 @@ $this->title = 'Order details';
 <table class="table">
     <thead>
     <tr>
-        <th>Item</th>
-        <th width="100">Quantity</th>
-        <th width="120">Unit Price</th>
-        <th width="100">Total</th>
+        <th>Proizvod</th>
+        <th width="100">Količina</th>
+        <th width="120">Cijena kom.</th>
+        <th width="100">Ukupno</th>
     </tr>
     </thead>
     <tbody>
@@ -26,16 +26,16 @@ $this->title = 'Order details';
             <td><?= $good->count ?></td>
             <td>
                 <?php if($good->discount) : ?>
-                    <del class="text-muted "><small><?= $good->item->oldPrice ?></small></del>
+                    <del class="text-muted "><small><?= $good->item->oldPrice ?> HRK</small></del>
                 <?php endif; ?>
-                <?= $good->price ?>
+                <?= $good->price ?> HRK
             </td>
-            <td><?= $good->price * $good->count ?></td>
+            <td><?= $good->price * $good->count ?> HRK</td>
         </tr>
     <?php endforeach; ?>
     <tr>
         <td colspan="5" class="text-right">
-            <h3>Total: <?= $order->cost ?>$</h3>
+            <h3>Ukupno: <?= $order->cost ?> HRK</h3>
         </td>
     </tr>
     </tbody>

@@ -1,4 +1,5 @@
 <?php
+
 use yii\easyii\modules\feedback\api\Feedback;
 use yii\easyii\modules\page\api\Page;
 
@@ -11,17 +12,16 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
 
 <div class="row">
-    <div class="col-md-8">
-        <?= $page->text ?>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-7">
         <?php if(Yii::$app->request->get(Feedback::SENT_VAR)) : ?>
-            <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Message successfully sent</h4>
+            <h4 class="text-success"><i class="glyphicon glyphicon-ok"></i> Poruka uspješno poslana.</h4>
         <?php else : ?>
             <div class="well well-sm">
                 <?= Feedback::form() ?>
             </div>
         <?php endif; ?>
     </div>
+    <div class="col-md-5">
+        <?= $page->text ?>
+    </div>
 </div>
-
