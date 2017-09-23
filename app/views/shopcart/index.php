@@ -15,15 +15,15 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
 <?php if(count($goods)) : ?>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
             <?= Html::beginForm(['/shopcart/update'])?>
-            <table class="table">
+            <table class="table" style="table-layout: fixed">
                 <thead>
                 <tr>
-                    <th>Item</th>
-                    <th width="100">Quantity</th>
-                    <th width="120">Unit Price</th>
-                    <th width="100">Total</th>
+                    <th>Proizvod</th>
+                    <th width="100">Količina</th>
+                    <th width="120">Cijena kom.</th>
+                    <th width="150">Ukupno</th>
                     <th width="30"></th>
                 </tr>
                 </thead>
@@ -37,31 +37,31 @@ $this->params['breadcrumbs'][] = $page->model->title;
                         <td><?= Html::textInput("Good[$good->id]", $good->count, ['class' => 'form-control input-sm']) ?></td>
                         <td>
                             <?php if($good->discount) : ?>
-                                <del class="text-muted "><small><?= $good->item->oldPrice ?></small></del>
+                                <del class="text-muted "><small><?php echo number_format($good->item->oldPrice, 2, ',', '.'); ?> HRK</small></del>
                             <?php endif; ?>
-                            <?= $good->price ?>
+                            <?php echo number_format($good->price, 2, ',', '.'); ?> HRK
                         </td>
-                        <td><?= $good->price * $good->count ?></td>
-                        <th><?= Html::a('<i class="glyphicon glyphicon-trash text-danger"></i>', ['/shopcart/remove', 'id' => $good->id], ['title' => 'Remove item']) ?></th>
+                        <td><?php echo number_format($good->price * $good->count, 2, ',', '.'); ?> HRK</td>
+                        <th><?= Html::a('<i class="glyphicon glyphicon-trash text-danger"></i>', ['/shopcart/remove', 'id' => $good->id], ['title' => 'Ukloni proizvod']) ?></th>
                     </tr>
                 <?php endforeach; ?>
                 <tr>
                     <td colspan="5" class="text-right">
-                        <h3>Total: <?= Shopcart::cost() ?>$</h3>
+                      <h3>Ukupno: <?php echo number_format(Shopcart::cost(), 2, ',', '.'); ?> HRK</h3>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <?= Html::submitButton('<i class="glyphicon glyphicon-refresh"></i> Update', ['class' => 'btn btn-default pull-right']) ?>
+            <?= Html::submitButton('<i class="glyphicon glyphicon-refresh"></i> Ažuriraj', ['class' => 'btn btn-default pull-right']) ?>
             <?= Html::endForm()?>
         </div>
-        <div class="col-md-4 col-md-offset-2">
-            <h4>Checkout</h4>
+        <div class="col-md-4">
+            <h4>Pošalji upit</h4>
             <div class="well well">
-                <?= Shopcart::form(['successUrl' => Url::to('/shopcart/success')])?>
+              <?= Shopcart::form(['successUrl' => Url::to('/shopcart/success')])?>
             </div>
         </div>
     </div>
 <?php else : ?>
-    <p>Shopping cart is empty</p>
+    <p>Lista upita je prazna.</p>
 <?php endif; ?>

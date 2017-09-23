@@ -33,14 +33,14 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
                             ['label' => 'Naslovna', 'url' => ['site/index']],
                             ['label' => 'Katalog', 'url' => ['shop/index']],
                             ['label' => 'Novosti', 'url' => ['news/index']],
-                            ['label' => 'Galerija', 'url' => ['gallery/index']],
+                            // ['label' => 'Galerija', 'url' => ['gallery/index']],
                             ['label' => 'Kontakt', 'url' => ['/contact/index']],
                         ],
                     ]); ?>
                     <a href="<?= Url::to(['/shopcart']) ?>" class="btn btn-default navbar-btn navbar-right" title="Pošalji upit">
                         <i class="glyphicon glyphicon-shopping-cart"></i>
                         <?php if($goodsCount > 0) { ?>
-                            <?= $goodsCount ?> <?= $goodsCount > 1 ? 'items' : 'item' ?> - <?php echo number_format(Shopcart::cost(), 2, ',', '.'); ?> HRK
+                            <?= $goodsCount ?> <?= $goodsCount > 1 ? 'proizvoda' : 'proizvod' ?> - <?php echo number_format(Shopcart::cost(), 2, ',', '.'); ?> HRK
                         <?php } ?>
                     </a>
 
@@ -49,12 +49,12 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
         </nav>
     </header>
     <main>
-        <?php if($this->context->id != 'site') : ?>
+        <?php /* if($this->context->id != 'site') : ?>
             <br/>
-            <?= Breadcrumbs::widget([
+            <?php echo Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ])?>
-        <?php endif; ?>
+        <?php endif; */ ?>
         <?= $content ?>
         <div class="push"></div>
     </main>
