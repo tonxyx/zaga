@@ -32,6 +32,7 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
                         'items' => [
                             ['label' => 'Naslovna', 'url' => ['site/index']],
                             ['label' => 'Katalog', 'url' => ['shop/index']],
+                            ['label' => 'Felco', 'url' => "http://www.felco-racki.com"],
                             ['label' => 'Novosti', 'url' => ['news/index']],
                             // ['label' => 'Galerija', 'url' => ['gallery/index']],
                             ['label' => 'Kontakt', 'url' => ['/contact/index']],
@@ -60,10 +61,10 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
     </main>
 </div>
 
-<footer>
+<footer style="background: url('<?php echo $asset->baseUrl ?>/footer-background.png');">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-sm-6 footerleft ">
+      <div class="col-md-4 col-sm-6 footerleft">
         <div class="logofooter"><img src="<?= $asset->baseUrl ?>/logo.png" /></div>
         <p>Porijeklo kapitala  100% domaći kapital - izvor FINA (domaći kapital - izvor DZS) 20.000 Kn uplaćen u cijelosti.
           Direktor i član uprave društva je Matija Rački zastupa društvo pojedinačno i samostalno.</p>
@@ -105,37 +106,15 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
 
 <div class="copyright">
   <div class="container">
-    <div class="col-md-11">
+    <div class="col-md-7">
       <p>© 2017 - zaga-racki.hr</p>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-3">
       <p><a href="https://www.facebook.com/zagakrk">Facebook</a></p>
+    </div>
+    <div class="col-md-2">
+      <p>Published by <a href="http://tonxyx.com">Tonxyx</a></p>
     </div>
   </div>
 </div>
-
-<!-- <footer>
-  <div class="container footer-content">
-    <div class="row">
-      <div class="col-md-2">
-        Prijava na newsletter
-      </div>
-      <div class="col-md-10">
-        <?php if(Yii::$app->request->get(Subscribe::SENT_VAR)) : ?>
-          Uspješno ste se prijavili
-        <?php else : ?>
-          <?= Subscribe::form() ?>
-        <?php endif; ?>
-      </div>
-    </div>
-    <div class="col-sm-12">
-      <ul class="list-unstyled clear-margins">
-
-      </ul>
-    </div>
-    <div class="col-md-12 text-right">
-      ©2017 zaga-racki.hr
-    </div>
-  </div>
-</footer> -->
 <?php $this->endContent(); ?>

@@ -92,9 +92,9 @@ footer, .push {
 
 footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', sans-serif; }
 .footerleft { margin-top:50px; padding:0 36px; }
-.logofooter { margin-bottom:10px; font-size:25px; color:#fff; font-weight:700;}
+.logofooter { margin-bottom:10px; font-size:25px; font-weight:700;}
 
-.footerleft p { color:#fff; font-size:12px !important; font-family: 'Open Sans', sans-serif; margin-bottom:15px;}
+.footerleft p { font-size:12px !important; font-family: 'Open Sans', sans-serif; margin-bottom:15px;}
 .footerleft p i { width:20px; color:#999;}
 
 
@@ -111,17 +111,13 @@ footer { background-color:#0c1a1e; min-height:350px; font-family: 'Open Sans', s
      -o-transform: scale(1.1);
  }
 
-
-
-
  .icon-ul { list-style-type:none !important; margin:0px; padding:0px;}
  .icon-ul li { line-height:75px; width:100%; float:left;}
  .icon { float:left; margin-right:5px;}
 
-
- .copyright { min-height:40px; background-color:#000000;}
- .copyright p { text-align:left; color:#FFF; padding:10px 0; margin-bottom:0px;}
- .heading7 { font-size:21px; font-weight:700; color:#d9d6d6; margin-bottom:22px;}
+ .copyright { min-height:40px; }
+ .copyright p { text-align:left; padding:10px 0; margin-bottom:0px;}
+ .heading7 { font-size:21px; font-weight:700; margin-bottom:22px;}
  .post p { font-size:12px; color:#FFF; line-height:20px;}
  .post p span { display:block; color:#8f8f8f;}
  .bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}

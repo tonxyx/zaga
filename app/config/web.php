@@ -36,18 +36,18 @@ $config = [
         ],
         'assetManager' => [
             // uncomment the following line if you want to auto update your assets (unix hosting only)
-            //'linkAssets' => true,
-            'bundles' => [
-                'yii\web\JqueryAsset' => [
-                    'js' => [YII_DEBUG ? 'jquery.js' : 'jquery.min.js'],
-                ],
-                'yii\bootstrap\BootstrapAsset' => [
-                    'css' => [YII_DEBUG ? 'css/bootstrap.css' : 'css/bootstrap.min.css'],
-                ],
-                'yii\bootstrap\BootstrapPluginAsset' => [
-                    'js' => [YII_DEBUG ? 'js/bootstrap.js' : 'js/bootstrap.min.js'],
-                ],
-            ],
+            'linkAssets' => true,
+            // 'bundles' => [
+            //     'yii\web\JqueryAsset' => [
+            //         'js' => [YII_DEBUG ? 'jquery.js' : 'jquery.min.js'],
+            //     ],
+            //     'yii\bootstrap\BootstrapAsset' => [
+            //         'css' => [YII_DEBUG ? 'css/bootstrap.css' : 'css/bootstrap.min.css'],
+            //     ],
+            //     'yii\bootstrap\BootstrapPluginAsset' => [
+            //         'js' => [YII_DEBUG ? 'js/bootstrap.js' : 'js/bootstrap.min.js'],
+            //     ],
+            // ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
