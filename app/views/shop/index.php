@@ -25,11 +25,6 @@ function renderNode($node){
 
 <div class="row">
     <div class="col-md-8">
-        <h1>
-            <!-- <?php echo $page->seo('h1', $page->title) ?> -->
-            <!-- <a class="btn btn-success" href="<?= File::get('price-list')->file ?>"><i class="glyphicon glyphicon-save"></i> Download price list</a> -->
-        </h1>
-        <br/>
         <ul class="list-group">
             <?php foreach(Catalog::tree() as $node) echo renderNode($node); ?>
         </ul>

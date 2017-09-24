@@ -4,3 +4,4 @@ Thumbs.db
 .vagrant
 app/config/db.php
 vendor
+bower.zip
