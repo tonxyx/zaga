@@ -1,0 +1,71 @@
+.o-mainHeader {
+  border-bottom: 2px solid $brand-primary;
+
+  &, &_nav {
+    //background-color: #f8f8f8;
+    background: rgb(113,119,122);
+    background: linear-gradient(
+            to bottom,
+            rgba(113,119,122,1) 0%,
+            rgba(37,44,50,1) 100%);
+  }
+
+  &_nav {
+    border: 0;
+    margin: 0;
+  }
+
+  &_logo {
+    display: inline-block;
+    margin-right: 1rem;
+
+    img {
+      height: 51px;
+    }
+
+  }
+
+  .nav.navbar-nav {}
+
+  .nav.navbar-nav a {
+    @include transition();
+    color: $white;
+
+    &:hover {
+      color: $brand-primary;
+    }
+
+  }
+
+  .nav.navbar-nav .active a {
+    border-top: 1px solid $brand-primary;
+    color: $brand-primary;
+
+    @media screen and ('min-width: 768px') {
+      background: rgb(113,119,122);
+      background: linear-gradient(
+              to bottom,
+              rgba(113,119,122,1) 0%,
+              rgba(37,44,50,1) 100%);
+    }
+
+  }
+
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: $white;
+  }
+
+  .navbar-default .navbar-collapse {
+    border: 0;
+  }
+
+  .navbar-default .navbar-toggle:hover,
+  .navbar-default .navbar-toggle:focus {
+    background-color: rgba($white, .2);
+  }
+
+  .btn.btn-default.navbar-btn.navbar-right {
+    background-color: rgba($white, .1);
+  }
+
+}

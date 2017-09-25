@@ -6,7 +6,7 @@ $basePath =  dirname(__DIR__);
 $webroot = dirname($basePath);
 
 $config = [
-    'id' => 'app',
+    'id' => 'zaga',
     'basePath' => $basePath,
     'bootstrap' => ['log'],
     'language' => 'en-US',

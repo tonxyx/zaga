@@ -1,0 +1,39 @@
+.slide.carousel {
+
+  .left.carousel-control,
+  .right.carousel-control {
+    @include transition();
+    padding-top: 3rem;
+    color: $brand-primary;
+    font-size: 3rem;
+    opacity: .75;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @media screen and ('min-width: 768px') {
+      padding-top: 5rem;
+      font-size: 5rem;
+    }
+
+  }
+
+  .item > img {
+    width: 100%;
+  }
+
+  .carousel-caption {
+    padding: 2rem 1rem;
+    background-color: rgba($black, .65);
+    border-radius: 2px;
+
+    h3 {
+      margin-top: 0;
+    }
+
+  }
+
+}
+
+

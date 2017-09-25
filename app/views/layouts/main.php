@@ -10,61 +10,66 @@ $goodsCount = count(Shopcart::goods());
 
 $this->beginContent('@app/views/layouts/base.php'); ?>
 
-<div id="wrapper" class="container">
-    <header>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?= Url::home() ?>">
-                      <img src="<?= $asset->baseUrl ?>/logo.png" height="180%"/>
-                    </a>
-                </div>
+<header class="o-mainHeader">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
 
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <?= Menu::widget([
-                        'options' => ['class' => 'nav navbar-nav'],
-                        'items' => [
-                            ['label' => 'Naslovna', 'url' => ['site/index']],
-                            ['label' => 'Katalog', 'url' => ['shop/index']],
-                            ['label' => 'Felco', 'url' => "http://www.felco-racki.com"],
-                            ['label' => 'Novosti', 'url' => ['news/index']],
-                            // ['label' => 'Galerija', 'url' => ['gallery/index']],
-                            ['label' => 'Kontakt', 'url' => ['/contact/index']],
-                        ],
-                    ]); ?>
-                    <a href="<?= Url::to(['/shopcart']) ?>" class="btn btn-default navbar-btn navbar-right" title="Pošalji upit">
-                        <i class="glyphicon glyphicon-shopping-cart"></i>
-                        <?php if($goodsCount > 0) { ?>
-                            <?= $goodsCount ?> <?= $goodsCount > 1 ? 'proizvoda' : 'proizvod' ?> - <?php echo number_format(Shopcart::cost(), 2, ',', '.'); ?> HRK
-                        <?php } ?>
-                    </a>
+        <nav class="navbar navbar-default o-mainHeader_nav">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="o-mainHeader_logo" href="<?= Url::home() ?>">
+              <img src="<?= $asset->baseUrl ?>/logo-white.png" height="180%"/>
+            </a>
+          </div>
 
-                </div>
-            </div>
+          <div class="collapse navbar-collapse" id="navbar-menu">
+            <?= Menu::widget([
+              'options' => ['class' => 'nav navbar-nav'],
+              'items' => [
+                ['label' => 'Naslovna', 'url' => ['site/index']],
+                ['label' => 'Katalog', 'url' => ['shop/index']],
+                ['label' => 'Felco', 'url' => "http://www.felco-racki.com"],
+                ['label' => 'Novosti', 'url' => ['news/index']],
+                //['label' => 'Galerija', 'url' => ['gallery/index']],
+                ['label' => 'Kontakt', 'url' => ['/contact/index']],
+              ],
+            ]); ?>
+            <a href="<?= Url::to(['/shopcart']) ?>" class="btn btn-default navbar-btn navbar-right" title="Pošalji upit">
+              <i class="c-icon"><img class="c-icon_img" src="<?= $asset->baseUrl ?>/icons/info.png" alt="i"></i>
+              <?php if($goodsCount > 0) { ?>
+                  <?= $goodsCount ?> <?= $goodsCount > 1 ? 'items' : 'item' ?> - <?php echo number_format(Shopcart::cost(), 2, ',', '.'); ?> HRK
+              <?php } ?>
+            </a>
+
+          </div>
         </nav>
-    </header>
-    <main>
-        <?php /* if($this->context->id != 'site') : ?>
-            <br/>
-            <?php echo Breadcrumbs::widget([
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ])?>
-        <?php endif; */ ?>
-        <?= $content ?>
-        <div class="push"></div>
-    </main>
-</div>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <?php /* if($this->context->id != 'site') : ?>
+      <br/>
+      <?php echo Breadcrumbs::widget([
+          'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+      ])?>
+  <?php endif; */ ?>
+  <?= $content ?>
+  <div class="push"></div>
+</main>
 
 <footer style="background: url('<?php echo $asset->baseUrl ?>/footer-background.png');">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-sm-6 footerleft">
+      <div class="col-md-4 col-sm-6 footerleft ">
         <div class="logofooter"><img src="<?= $asset->baseUrl ?>/logo.png" /></div>
         <p>Porijeklo kapitala  100% domaći kapital - izvor FINA (domaći kapital - izvor DZS) 20.000 Kn uplaćen u cijelosti.
           Direktor i član uprave društva je Matija Rački zastupa društvo pojedinačno i samostalno.</p>
@@ -99,10 +104,11 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
           <?php endif; ?>
         </div>
       </div>
+
     </div>
   </div>
 </footer>
-<!--footer end here-->
+
 
 <div class="copyright">
   <div class="container">

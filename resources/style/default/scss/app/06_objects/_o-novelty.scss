@@ -1,0 +1,50 @@
+.o-novelty {
+  padding: .8rem;
+  border: 5px solid rgba($brand-primary, .08);
+  background-color: rgba($brand-dark, .04);
+
+  &:hover {
+    border: 5px solid rgba($brand-primary, .2);
+  }
+
+  &:hover {}
+
+  &_title {
+    margin: 0;
+    font-size: 1rem;
+    color: $brand-primary;
+  }
+
+  &_img {
+    width: 100%;
+    margin-top: .4rem;
+  }
+
+  &_text {
+    margin-top: .4rem;
+    font-size: .875rem;
+  }
+
+  &_wrap {
+    margin-top: 1rem;
+  }
+
+  &,
+  &_link,
+  &_text {
+    @include transition();
+  }
+
+  &_link {
+    color: $text-color;
+  }
+
+  &_link:hover {
+    text-decoration: none;
+  }
+
+  &_link:hover .o-novelty_text {
+    color: $brand-primary;
+  }
+
+}
