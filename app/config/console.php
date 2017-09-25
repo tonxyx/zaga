@@ -6,7 +6,7 @@ $basePath =  dirname(__DIR__);
 $webroot = dirname($basePath);
 
 return [
-    'id' => 'app-console',
+    'id' => 'zaga-console',
     'basePath' => $basePath,
     'runtimePath' => $webroot . '/runtime',
     'vendorPath' => $webroot . '/vendor',
