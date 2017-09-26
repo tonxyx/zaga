@@ -41,6 +41,11 @@
     border-top: 1px solid $brand-primary;
     color: $brand-primary;
 
+    @media screen and ('max-width: 767px') {
+      background-color: rgba($white, .2);
+      color: $white;
+    }
+
     @media screen and ('min-width: 768px') {
       background: rgb(113,119,122);
       background: linear-gradient(

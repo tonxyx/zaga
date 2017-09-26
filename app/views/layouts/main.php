@@ -66,19 +66,34 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
   <div class="push"></div>
 </main>
 
-<footer style="background: url('<?php echo $asset->baseUrl ?>/footer-background.png');">
+<footer class="o-mainFooter" style="background-image: url('<?php echo $asset->baseUrl ?>/footer-background.png');">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-sm-6 footerleft ">
-        <div class="logofooter"><img src="<?= $asset->baseUrl ?>/logo.png" /></div>
+
+      <div class="col-sm-12">
+
+        <div class="d-flex-md justify-content-between-md text-md-down-center">
+          <div class="o-mainFooter_logo">
+            <img class="o-mainFooter_logo_img" src="<?= $asset->baseUrl ?>/logo-white.png">
+          </div>
+
+          <div class="o-mainFooter_brands">
+            <img class="o-mainFooter_brands_img" src="<?= $asset->baseUrl ?>/logos_banner.png">
+          </div>
+        </div>
+
+        <div class="o-mainFooter_sep"></div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 ">
         <p>Porijeklo kapitala  100% domaći kapital - izvor FINA (domaći kapital - izvor DZS) 20.000 Kn uplaćen u cijelosti.
           Direktor i član uprave društva je Matija Rački zastupa društvo pojedinačno i samostalno.</p>
         <p><i class="fa fa-map-pin"></i> Zagrebačka 18, 51500 Krk</p>
         <p><i class="fa fa-phone"></i> Tel.: ‎+385 51 220 330</p>
         <p><i class="fa fa-envelope"></i> E-mail: info@zaga-racki.hr</p>
-
       </div>
-      <div class="col-md-4 col-sm-6 paddingtop-bottom">
+
+      <div class="col-md-4 col-sm-6">
         <h6 class="heading7">Ostale informacije</h6>
         <ul class="footer-ul">
           <li>OIB: 71162092072</li>
@@ -90,37 +105,53 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
           <li>BIC/SWIFT: PBZGHR2X</li>
         </ul>
       </div>
-      <div class="col-md-4 col-sm-12 paddingtop-bottom">
-        <div class="col-md-12" style="margin-bottom: 150px"><img src="<?= $asset->baseUrl ?>/logos_banner.png" width="100%"/></div>
 
-        <div class="col-md-12 top">
-          Prijava na newsletter
+      <div class="col-md-4 col-sm-12">
+
+        <div class="o-subscribe_wrap">
+          <div>
+            Prijava na newsletter
+          </div>
+
+          <div class="o-subscribe">
+            <?php if(Yii::$app->request->get(Subscribe::SENT_VAR)) : ?>
+              Uspješno ste se prijavili
+            <?php else : ?>
+              <?= Subscribe::form() ?>
+            <?php endif; ?>
+          </div>
         </div>
-        <div class="col-md-12">
-          <?php if(Yii::$app->request->get(Subscribe::SENT_VAR)) : ?>
-            Uspješno ste se prijavili
-          <?php else : ?>
-            <?= Subscribe::form() ?>
-          <?php endif; ?>
-        </div>
+
       </div>
 
     </div>
   </div>
-</footer>
 
+  <div class="o-copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="o-tbl o-tbl-full o-tbl-middle">
+            <div class="o-tbl_cell text-md-down-center">
+              © 2017 - zaga-racki.hr
+            </div>
 
-<div class="copyright">
-  <div class="container">
-    <div class="col-md-7">
-      <p>© 2017 - zaga-racki.hr</p>
-    </div>
-    <div class="col-md-3">
-      <p><a href="https://www.facebook.com/zagakrk">Facebook</a></p>
-    </div>
-    <div class="col-md-2">
-      <p>Published by <a href="http://tonxyx.com">Tonxyx</a></p>
+            <div class="o-tbl_cell">
+              <div class="o-social d-flex justify-content-center">
+                <a href="https://www.facebook.com/zagakrk">
+                  <img src="<?= $asset->baseUrl ?>/icons/facebook.png" alt="Facebook">
+                </a>
+              </div>
+            </div>
+
+            <div class="o-tbl_cell text-md-down-center text-md-right">
+              Published by <a href="http://tonxyx.com">Tonxyx</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</footer>
+
 <?php $this->endContent(); ?>

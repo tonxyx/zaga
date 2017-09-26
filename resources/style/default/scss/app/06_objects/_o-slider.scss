@@ -1,5 +1,16 @@
 .slide.carousel {
 
+  @media screen and ('max-width: 767px') {
+    height: 350px;
+
+    .carousel-inner,
+    .item,
+    img {
+      height: 100%;
+    }
+
+  }
+
   .left.carousel-control,
   .right.carousel-control {
     @include transition();

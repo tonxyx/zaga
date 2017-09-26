@@ -1,7 +1,7 @@
 .o-novelty {
   padding: .8rem;
   border: 5px solid rgba($brand-primary, .08);
-  background-color: rgba($brand-dark, .04);
+  background-color: rgba($text-color, .04);
 
   &:hover {
     border: 5px solid rgba($brand-primary, .2);
@@ -23,6 +23,7 @@
   &_text {
     margin-top: .4rem;
     font-size: .875rem;
+    line-height: $line-height-md;
   }
 
   &_wrap {
@@ -45,6 +46,11 @@
 
   &_link:hover .o-novelty_text {
     color: $brand-primary;
+  }
+
+  &_sectionWrap {
+    padding: 1rem 0 3rem;
+    background-color: darken($main-bg, 1%);
   }
 
 }

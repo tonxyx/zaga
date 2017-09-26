@@ -1,1 +1,13 @@
-a {}
+a {
+  color: inherit;
+
+  .o-novelty_wrap & {
+    color: inherit!important;
+
+    &, &:hover {
+      text-decoration: none!important;
+    }
+
+  }
+
+}

@@ -1,0 +1,35 @@
+.d-flex {
+  display: flex;
+}
+
+.d-flex-md {
+
+  @media screen and ('min-width: 992px') {
+    display: flex;
+  }
+
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-center-md-down {
+
+  @media screen and ('max-width: 992px') {
+    justify-content: center;
+  }
+
+}
+
+.justify-content-between-md {
+
+  @media screen and ('min-width: 992px') {
+    justify-content: space-between;
+  }
+
+}

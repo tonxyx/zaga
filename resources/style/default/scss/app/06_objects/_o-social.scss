@@ -1,0 +1,18 @@
+.o-social {
+
+  @media screen and ('max-width: 991px') {
+    padding: 1rem 0;
+  }
+
+  img {
+    @include transition();
+    height: 32px;
+    opacity: .8;
+
+    &:hover {
+      opacity: 1;
+    }
+
+  }
+
+}
