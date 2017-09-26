@@ -9,3 +9,19 @@
 .lh-1_8 {
   //line-height: 1.8;
 }
+
+.text-md-right {
+
+  @media screen and ('min-width: 992px') {
+    text-align: right;
+  }
+
+}
+
+.text-md-down-center {
+
+  @media screen and ('max-width: 991px') {
+    text-align: center;
+  }
+
+}

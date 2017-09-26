@@ -1,0 +1,25 @@
+.o-tbl {
+  display: table;
+
+  &-full {
+    width: 100%;
+  }
+
+  &-middle &_cell {
+    vertical-align: middle;
+  }
+
+  &_cell {
+    display: table-cell;
+  }
+
+  .o-copyright &,
+  .o-copyright &_cell {
+
+    @media screen and ('max-width: 991px') {
+      display: block;
+    }
+
+  }
+
+}

@@ -1,0 +1,35 @@
+.o-subscribe {
+  margin-top: .3rem;
+
+  .form-inline {
+    display: flex;
+  }
+
+  .form-group {
+    flex: 1 1 50%;
+  }
+  .form-control {
+    width: 100%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-control,
+  .btn {
+    height: 40px;
+  }
+
+  &_wrap {
+
+    @media screen and ('max-width: 991px') {
+      margin-top: 1rem;
+    }
+
+  }
+
+}
