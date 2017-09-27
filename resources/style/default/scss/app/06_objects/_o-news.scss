@@ -1,0 +1,51 @@
+.o-news {
+  list-style-type: none;
+  padding: 1rem 0 3rem;
+  margin: 0;
+
+  &_item {}
+
+  &_item + &_item {
+    padding-top: 1rem;
+    border-top: 1px solid rgba($brand-primary, .3);
+    margin-top: 1rem;
+  }
+
+  &_date {
+    padding: .1rem 0 .5rem;
+    font-size: 14px;
+    color: darken($text-color, 10%);
+  }
+
+  &_desc {
+    padding-bottom: .5rem;
+    font-size: 15px;
+  }
+
+  &_link {
+    color: $brand-primary;
+
+    &:hover {
+      color: darken($brand-primary, 10%);
+    }
+
+  }
+
+  .label-info {
+    @include transition();
+  }
+
+  .label-info:hover {
+    background-color: darken(#5bc0de, 15%);
+  }
+
+  @media screen and ('max-width: 500px') {
+
+    &_img {
+      width: 100%;
+      margin-bottom: .5rem;
+    }
+
+  }
+
+}
