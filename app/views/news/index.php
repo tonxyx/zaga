@@ -18,20 +18,16 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
       <ul class="o-news">
 
-
-        <?php foreach($news as $item) : ?>
+        <?php foreach($news as $item) { ?>
           <li class="o-news_item">
             <div class="row">
               <div class="col-md-2">
-                <!-- TODO add img with according class -->
-                <!-- <img class="o-news_img" src="" alt="">-->
-                <?= Html::img($item->thumb(160, 120)) ?>
+                <?= Html::img($item->thumb(160, 120), ['class' => 'o-news_img']) ?>
               </div>
 
               <div class="col-md-10">
 
-                <!-- TODO add item title and link to it -->
-                <a class="o-news_link" href="#">Some static title which needs to be changed</a>
+                <a class="o-news_link" href="#"><?= $item->title ?></a>
 
                 <div class="o-news_date"><?= $item->date ?></div>
 
@@ -46,7 +42,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
               </div>
             </div>
           </li>
-        <?php endforeach; ?>
+        <?php } ?>
 
       </ul>
 
