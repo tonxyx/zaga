@@ -20,8 +20,6 @@ $this->params['breadcrumbs'][] = $news->model->title;
 
         <?php if(count($news->photos)) : ?>
           <div class="o-gallery">
-            <h4 class="o-gallery_ttl">Photos</h4>
-
             <div class="row">
 
               <?php foreach($news->photos as $photo) : ?>
@@ -46,7 +44,7 @@ $this->params['breadcrumbs'][] = $news->model->title;
           <?php endforeach; ?>
         </div>
 
-        <div class="small-muted">Views: <?= $news->views ?></div>
+        <div class="small-muted">Broj pregleda: <?= $news->views ?></div>
 
       </div>
 
