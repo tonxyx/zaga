@@ -8,8 +8,10 @@ $page = Page::get('page-shopcart-success');
 $this->title = $page->seo('title', $page->model->title);
 $this->params['breadcrumbs'][] = $page->model->title;
 ?>
-<h1><?= $page->seo('h1', $page->title) ?></h1>
+<div class="container">
+  <h1><?= $page->seo('h1', $page->title) ?></h1>
 
-<br/>
+  <br>
 
-<?= $page->text ?>
+  <?= $page->text ?>
+</div>

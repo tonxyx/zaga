@@ -26,7 +26,7 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
 
         <div class="row">
           <div class="col-md-3 imgFull">
-            <?= Html::img($item->thumb(120, 240)) ?>
+            <?= Html::img($item->image) ?>
           </div>
           <div class="col-md-9">
             <div class="row">
@@ -34,20 +34,24 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
                 <h2>
                   <span class="label label-warning"><?php echo number_format($item->price, 2, ',', '.'); ?> HRK</span>
                   <?php if($item->discount) { ?>
-                    <del class="small"><?php echo number_format($item->oldPrice, 2, ',', '.'); ?></del>
+                    <del class="small"><?php echo number_format($item->oldPrice, 2, ',', '.'); ?> HRK</del>
                   <?php } ?>
                 </h2>
                 <h3>Karakteristike</h3>
                 <?php foreach ($category->fields as $field) {
-                  if (isset($item->data->{$field->name})) { ?>
-                    <span class="text-muted"><?php echo $field->title; ?>:</span>
-                    <?php if (is_array($item->data->{$field->name})) {
-                      foreach ($item->data->{$field->name} as $key => $value) {
-                        echo $value  . ', ';
+                  if (isset($item->data->{$field->name}) && $item->data->{$field->name}) { ?>
+                    <?php if ($field->type != 'boolean'){ ?>
+                      <span class="text-muted"><?php echo $field->title; ?>: </span>
+                      <?php if (is_array($item->data->{$field->name})) {
+                        foreach ($item->data->{$field->name} as $key => $value) {
+                          echo $value  . ', ';
+                        }
+                      } else {
+                        echo $item->data->{$field->name};
                       }
-                    } else {
-                      echo $item->data->{$field->name};
-                    } ?>
+                    } else { ?>
+                      <span class="text-muted"><?php echo $field->title; ?></span>
+                    <?php } ?>
                     <br/>
                   <?php }
                 }
@@ -82,15 +86,14 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
           <div class="col-sm-12">
             <?php if(count($item->photos)) : ?>
             <div class="o-gallery">
-              <h4 class="o-gallery_ttl">Photos</h4>
-
               <div class="row">
 
                 <?php foreach($item->photos as $photo) : ?>
                   <div class="col-xs-3 col-md-2">
                     <div class="o-novelty">
-                      <!-- TODO increase variation to 200x200 -->
-                      <?= $photo->box(null, 100) ?>
+                      <a class="easyii-box" href="<?= $photo->image ?>" rel="main">
+                        <?= Html::img($photo->image) ?>
+                      </a>
                     </div>
                   </div>
                 <?php endforeach;?>

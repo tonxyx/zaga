@@ -27,8 +27,7 @@ $this->params['breadcrumbs'][] = $news->model->title;
               <?php foreach($news->photos as $photo) : ?>
                 <div class="col-xs-3 col-md-2">
                   <div class="o-novelty">
-                    <!-- TODO increase variation to 200x200 -->
-                    <?= $photo->box(100, 100) ?>
+                    <?= $photo->box(200, 200) ?>
                   </div>
                 </div>
               <?php endforeach;?>

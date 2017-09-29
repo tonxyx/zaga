@@ -34,7 +34,7 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
               'items' => [
                 ['label' => 'Naslovna', 'url' => ['site/index']],
                 ['label' => 'Katalog', 'url' => ['shop/index']],
-                ['label' => 'Felco', 'url' => "http://www.felco-racki.com"],
+                // ['label' => 'Felco', 'url' => "http://www.felco-racki.com"],
                 ['label' => 'Novosti', 'url' => ['news/index']],
                 //['label' => 'Galerija', 'url' => ['gallery/index']],
                 ['label' => 'Kontakt', 'url' => ['/contact/index']],
@@ -145,7 +145,7 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
             </div>
 
             <div class="o-tbl_cell text-md-down-center text-md-right">
-              Published by <a href="http://tonxyx.com">Tonxyx</a>
+              Developed by <a href="http://tonxyx.com">Tonxyx</a> &amp; <a href="mailto:scemby@gmail.com">Scemby</a>
             </div>
           </div>
         </div>

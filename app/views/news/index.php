@@ -28,8 +28,7 @@ $this->params['breadcrumbs'][] = $page->model->title;
 
                 <div class="col-md-10">
 
-                  <!-- TODO add link to novelty instead of # -->
-                  <a class="o-news_link" href="#"><?= $item->title ?></a>
+                  <a class="o-news_link" href="<?= Url::to(['/news/view/' . $item->slug]) ?>"><?= $item->title ?></a>
 
                   <div class="o-news_date"><?= $item->date ?></div>
 
