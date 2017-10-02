@@ -36,7 +36,7 @@
       </p>
       <h3>
         <?php if($item->discount) { ?>
-            <del class="small"><?php echo number_format($item->oldPrice, 2, ',', '.'); ?></del>
+            <del class="small"><?php echo number_format($item->oldPrice, 2, ',', '.'); ?> HRK</del>
         <?php }
         echo number_format($item->price, 2, ',', '.'); ?> HRK
       </h3>

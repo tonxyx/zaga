@@ -26,15 +26,15 @@ $config = [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-   	    'transport' => [
-	    	'class' => 'Swift_SmtpTransport',
-		'host' => 'smtp.gmail.com',
-		'username' => 'tonxyx@gmail.com',
-		'password' => '',
-		'port' => '587',
-		'encryption' => 'ssl',
+       	    'transport' => [
+      	    	'class' => 'Swift_SmtpTransport',
+          		'host' => 'smtp.gmail.com',
+          		'username' => 'tonxyx@gmail.com',
+          		'password' => '',
+          		'port' => '587',
+          		'encryption' => 'ssl',
             ],
-    	],
+    	  ],
         'urlManager' => [
             'rules' => [
                 '<controller:\w+>/view/<slug:[\w-]+>' => '<controller>/view',

@@ -1,4 +1,5 @@
 <?php
+
 use yii\easyii\modules\shopcart\api\Shopcart;
 use yii\easyii\modules\subscribe\api\Subscribe;
 use yii\helpers\Url;
@@ -18,7 +19,7 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
         <nav class="navbar navbar-default o-mainHeader_nav">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-menu">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">Menu</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>

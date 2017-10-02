@@ -10,14 +10,23 @@ $page = Page::get('page-shop');
 $this->title = $page->seo('title', $page->model->title);
 $this->params['breadcrumbs'][] = 'Katalog';
 
-function renderNode($node){
+function renderNode($node, $initialImage = true){
     if(!count($node->children)){
-        $html = '<li class="o-catalog_item">' .
-          Html::a($node->title, ['/shop/cat', 'slug' => $node->slug])
-          . '</li>';
+        $html = '<li class="o-catalog_item">';
+
+        if ($initialImage) {
+          $html .= Html::img($node->image, ['width' => '100%']);
+        }
+
+        $html .= Html::a($node->title, ['/shop/cat', 'slug' => $node->slug]) . '</li>';
     } else {
-      $html = '<li class="o-catalog_item o-catalog_item-drop">
-        <input id="' . $node->slug . '" class="o-toggle_trigger" type="checkbox">
+      $html = '<li class="o-catalog_item o-catalog_item-drop">';
+
+      if ($initialImage) {
+        $html .= Html::img($node->image, ['width' => '100%']);
+      }
+
+      $html .= '<input id="' . $node->slug . '" class="o-toggle_trigger" type="checkbox">
         <a href="#">' . $node->title . '</a>
         <label class="o-toggle_label" for="' . $node->slug . '">
           <span class="first">↓</span>
@@ -27,7 +36,7 @@ function renderNode($node){
       $html .= '<ul class="o-catalog_list">';
 
       foreach($node->children as $child){
-        $html .= renderNode($child);
+        $html .= renderNode($child, false);
       }
 
       $html .= '</ul></li>';
