@@ -7,9 +7,7 @@ class AppAsset extends \yii\web\AssetBundle
     public $css = [
         'css/main.css',
     ];
-    public $js = [
-        'js/scripts.js'
-    ];
+    public $js = [];
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',

@@ -3,5 +3,7 @@ Thumbs.db
 .DS_Store
 .vagrant
 app/config/db.php
+app/config/web.php
 vendor
 bower.zip
+.well-known

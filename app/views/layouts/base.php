@@ -13,7 +13,7 @@ $this->beginPage() ?>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?php echo Html::csrfMetaTags(); ?>
         <title><?php echo Html::encode($this->title); ?></title>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
         <link rel="shortcut icon" href="<?php echo $asset->baseUrl; ?>/favicon.ico" type="image/x-icon">
         <link rel="icon" href="<?php echo $asset->baseUrl; ?>/favicon.ico" type="image/x-icon">
         <?php $this->head() ?>

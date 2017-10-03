@@ -91,7 +91,7 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
           Direktor i član uprave društva je Matija Rački zastupa društvo pojedinačno i samostalno.</p>
         <p><i class="fa fa-map-pin"></i> Zagrebačka 18, 51500 Krk</p>
         <p><i class="fa fa-phone"></i> Tel.: ‎+385 51 220 330</p>
-        <p><i class="fa fa-envelope"></i> E-mail: info@zaga-racki.hr</p>
+        <p><i class="fa fa-envelope"></i> E-mail: <a href="mailto:info@zaga-racki.hr">info@zaga-racki.hr</a></p>
       </div>
 
       <div class="col-md-4 col-sm-6">
