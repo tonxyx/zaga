@@ -4,6 +4,8 @@ use yii\easyii\modules\carousel\api\Carousel;
 use yii\easyii\modules\news\api\News;
 use yii\easyii\modules\page\api\Page;
 use yii\easyii\modules\text\api\Text;
+use yii\easyii\modules\catalog\api\ItemObject;
+use yii\easyii\modules\catalog\api\PhotoObject;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -28,6 +30,41 @@ $this->title = $page->seo('title', $page->model->title);
 <div class="o-novelty_sectionWrap">
   <section class="container">
     <div class="row">
+      <?php if (count($itemsOnDiscount)) { ?>
+        <div class="col-sm-12">
+          <h2>Akcije</h2>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+              <?php $init = 1; foreach ($itemsOnDiscount as $key => $value) {
+                $item = new ItemObject($value) ?>
+                <div class="item <?php echo $init ?' active' : ''; $init = 0; ?>" height="200px">
+                  <img src="<?php echo $item->thumb(550, 200); ?>" alt="<?php echo $item->title; ?>">
+                  <div class="carousel-caption">
+                    <h3><?php echo $item->title; ?></h3>
+                    <p>
+                      <del class="small">
+                        <?php echo number_format($item->oldPrice, 2, ',', '.'); ?> HRK
+                      </del>
+                      <?php echo number_format($item->price, 2, ',', '.'); ?> HRK
+                    </p>
+                  </div>
+                </div>
+              <?php } ?>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+      <?php } ?>
+
       <div class="col-sm-12">
         <h2>Novosti</h2>
 

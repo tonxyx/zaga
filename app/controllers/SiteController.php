@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\easyii\modules\page\models\Page;
+use yii\easyii\modules\catalog\models\Item;
 use yii\web\Controller;
 
 class SiteController extends Controller
@@ -19,9 +20,12 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        if(!Yii::$app->getModule('admin')->installed){
-            return $this->redirect(['/install/step1']);
-        }
-        return $this->render('index');
+        // if(!Yii::$app->getModule('admin')->installed){
+        //     return $this->redirect(['/install/step1']);
+        // }
+
+        return $this->render('index', [
+          'itemsOnDiscount' => Item::find()->where(['not', ['discount' => null]])->all()
+        ]);
     }
 }
