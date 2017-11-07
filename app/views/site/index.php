@@ -39,8 +39,8 @@ $this->title = $page->seo('title', $page->model->title);
             <div class="carousel-inner">
               <?php $init = 1; foreach ($itemsOnDiscount as $key => $value) {
                 $item = new ItemObject($value) ?>
-                <div class="item <?php echo $init ?' active' : ''; $init = 0; ?>" height="200px">
-                  <img src="<?php echo $item->thumb(550, 200); ?>" alt="<?php echo $item->title; ?>">
+                <div class="item <?php echo $init ?' active' : ''; $init = 0; ?>">
+                  <img src="<?php echo $item->thumb(1280, 600); ?>" alt="<?php echo $item->title; ?>">
                   <div class="carousel-caption">
                     <h3><?php echo $item->title; ?></h3>
                     <p>
