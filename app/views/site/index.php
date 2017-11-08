@@ -16,6 +16,31 @@ $this->title = $page->seo('title', $page->model->title);
 
 <?= Carousel::widget(1140, 520) ?>
 
+<style>
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+</style>
+
 <div class="o-welcome">
   <div class="container">
     <div class="row">
@@ -33,34 +58,33 @@ $this->title = $page->seo('title', $page->model->title);
       <?php if (count($itemsOnDiscount)) { ?>
         <div class="col-sm-12">
           <h2>Akcije</h2>
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <div class="swiper-container">
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-              <?php $init = 1; foreach ($itemsOnDiscount as $key => $value) {
-                $item = new ItemObject($value) ?>
-                <div class="item <?php echo $init ?' active' : ''; $init = 0; ?>">
-                  <img src="<?php echo $item->thumb(1280, 600); ?>" alt="<?php echo $item->title; ?>">
-                  <div class="carousel-caption">
+            <div class="swiper-wrapper">
+              <?php foreach ($itemsOnDiscount as $key => $value) { $item = new ItemObject($value) ?>
+                <div class="swiper-slide">
+                  <img src="<?php echo $item->thumb(550, 300); ?>" alt="<?php echo $item->title; ?>">
+                  <div style="position:absolute; padding: 2px; color: white; margin-top: 50px;
+                      background-color: rgba(0,0,0,.65); border-radius: 2px;">
                     <h3><?php echo $item->title; ?></h3>
-                    <p>
-                      <del class="small">
-                        <?php echo number_format($item->oldPrice, 2, ',', '.'); ?> HRK
+                    <h4>
+                      <del class="small" style="color: rgba(255,255,255,.65)">
+                        <?php echo number_format($item->oldPrice, 2, ',', '.'); ?>
                       </del>
                       <?php echo number_format($item->price, 2, ',', '.'); ?> HRK
-                    </p>
+                    </h4>
+                    <?php echo isset($item->data->akcija) && $item->data->akcija ?
+                      '</p>' . $item->data->akcija . '</p>' : '' ?>
                   </div>
                 </div>
               <?php } ?>
             </div>
 
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <div class="swiper-pagination"></div>
           </div>
         </div>
       <?php } ?>
