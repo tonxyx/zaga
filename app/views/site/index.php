@@ -14,7 +14,7 @@ $page = Page::get('page-index');
 $this->title = $page->seo('title', $page->model->title);
 ?>
 
-<?= Carousel::widget(1140, 520) ?>
+<?= Carousel::widget(1440, 700) ?>
 
 <style>
   .swiper-container {
