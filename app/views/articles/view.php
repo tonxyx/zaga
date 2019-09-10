@@ -7,6 +7,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Articles', 'url' => ['articles/ind
 $this->params['breadcrumbs'][] = ['label' => $article->cat->title, 'url' => ['articles/cat', 'slug' => $article->cat->slug]];
 $this->params['breadcrumbs'][] = $article->model->title;
 ?>
+<div class="container">
+<div class="col-12">
 <h1><?= $article->seo('h1', $article->title) ?></h1>
 
 <?= $article->text ?>
@@ -28,3 +30,4 @@ $this->params['breadcrumbs'][] = $article->model->title;
 </p>
 
 <small class="text-muted">Views: <?= $article->views?></small>
+</div></div>

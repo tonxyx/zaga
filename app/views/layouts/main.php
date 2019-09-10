@@ -158,8 +158,64 @@ $this->beginContent('@app/views/layouts/base.php'); ?>
 
 <?php $this->endContent(); ?>
 
+<div class="cookie_container" id="cookie-container">
+Kolačiće koristimo kako bismo poboljšali Vaše iskustvo na našoj web stranici. Pregledavajući ovu web-stranicu, pristajete na korištenje kolačića.
+<a href="https://zaga-racki.hr/articles/view/kolacici-cookies" style="padding-left: 5px;">Saznaj više</a>
+<a href="#" onclick="setCookie('zaga-racki.hr', 1, 365)" id="close-cookie" class="close_cookie pull-right">x</a>
+</div>
 
-<script>
+<style>
+.close_cookie {
+  font-size: 22px;
+  font-weight: lighter;
+  margin-top: -6px;
+}
+
+.cookie_container {
+  z-index: 9999;
+  background-color: rgba(12,26,30,.6);
+  display: none;
+  width: 100%;
+  border: 1px solid #e5803a;
+  border-radius: 5px;
+  position: fixed;
+  bottom: 2px;
+  color: #fff;
+  min-height: 50px;
+  padding: 15px;
+</style>
+
+      <script>
+  function setCookie(cname, cvalue, exdays) {
+	    var d = new Date();
+	      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	      var expires = "expires="+ d.toUTCString();
+	        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+	      document.getElementById('cookie-container').style = 'display: none';
+  }
+
+  function getCookie(cname) {
+	    var name = cname + "=";
+	      var decodedCookie = decodeURIComponent(document.cookie);
+	      var ca = decodedCookie.split(';');
+	        for(var i = 0; i <ca.length; i++) {
+			    var c = ca[i];
+			        while (c.charAt(0) == ' ') {
+					      c = c.substring(1);
+					          }
+			        if (c.indexOf(name) == 0) {
+					      return c.substring(name.length, c.length);
+					          }
+			      }
+	        return "";
+  }
+
+  var cookie = getCookie('zaga-racki.hr');
+  if (cookie == '') {
+   document.getElementById('cookie-container').style = 'display: block';
+  }
+	  
   var swiper = new Swiper('.swiper-container', {
     slidesPerView: 2,
     spaceBetween: 3,

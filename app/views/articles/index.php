@@ -5,6 +5,8 @@ use yii\helpers\Html;
 
 $page = Page::get('page-articles');
 
+<div class="row">
+	<div class="col-12>
 $this->title = $page->seo('title', $page->model->title);
 $this->params['breadcrumbs'][] = $page->model->title;
 
@@ -26,3 +28,4 @@ function renderNode($node){
 <ul>
     <?php foreach(Article::tree() as $node) echo renderNode($node); ?>
 </ul>
+</div></div>
