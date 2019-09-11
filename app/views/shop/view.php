@@ -24,7 +24,7 @@ if(!empty($item->data->color) && is_array($item->data->color)) {
       <div class="col-sm-12">
         <h1 class="o-shopItemView_ttl"><?= $item->seo('h1', $item->title) ?></h1>
 
-        <div class="row">
+        <div class="row">        
           <div class="col-md-3 imgFull">
             <?= Html::img($item->image) ?>
           </div>

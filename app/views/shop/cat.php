@@ -29,14 +29,14 @@ list-style: none;
 }
 </style>
 
-	<div class="container">
+<div class="container">
   <div class="row">
     <div class="col-sm-12">
       <div class="o-categoryList">
         <h1 class="o-categoryList_ttl"><?= $cat->model->title ?></h1>
 
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-8 col-xs-12 pull-right">
             <?php if(count($items)) : ?>
               <?php foreach($items as $item) { ?>
                 <?= $this->render('_item', ['item' => $item, 'category' => $cat]) ?>
@@ -46,12 +46,11 @@ list-style: none;
             <?php endif; ?>
           </div>
 
-	  <div class="col-md-4">
-<div class="row">
-	    <div class="col-12" style="text-align: right">
-            <a class="btn btn-default" data-toggle="collapse" href="#collapseE" role="button" aria-expanded="false" aria-controls="collapseExample">Filter</a>
-	    </div>
-	    <div class="col-12 well well-sm collapse" id="collapseE">
+          <div class="col-md-4 col-xs-12 pull-left">
+      	    <div class="col-12">
+              <a class="btn btn-default" data-toggle="collapse" href="#collapseE" role="button" aria-expanded="false" aria-controls="collapseExample">Filter</a>
+      	    </div>
+      	    <div class="col-12 well well-sm collapse" id="collapseE">
               <?php $form = ActiveForm::begin(['method' => 'get', 'action' => Url::to(['/shop/cat', 'slug' => $cat->slug])]); ?>
                 <?= $form->field($filterForm, 'priceFrom') ?>
                 <?= $form->field($filterForm, 'priceTo') ?>
@@ -59,48 +58,37 @@ list-style: none;
                 <?php // $form->field($filterForm, 'storageTo') ?>
                 <?= Html::submitButton('Traži', ['class' => 'btn btn-primary']) ?>
               <?php ActiveForm::end(); ?>
-	    </div>
-<hr>
-<?php
-   function renderNode($node, $initialImage = true){
-        if(!count($node->children)){
-					        $html = '<li class="list-item">';
-        $html .= Html::a($node->title, ['/shop/cat', 'slug' => $node->slug]) . '</li>';
-    } else {
-      $html = '<li class="list-item">';
+      	    </div>
+            <hr>
+            <?php function renderNode($node, $initialImage = true){
+              if(!count($node->children)){
+                $html = '<li class="list-item">';
+                $html .= Html::a($node->title, ['/shop/cat', 'slug' => $node->slug]) . '</li>';
+              } else {
+                $html = '<li class="list-item">';
+                $html .= '<a href="#' . $node->slug . '" class="" data-toggle="collapse">' . $node->title . '<span class="pull-right">↓</span></a>';
+                $html .= '<ul class="list-group list-group-collapse collapse" id="' . $node->slug . '">';
+                foreach($node->children as $child){$html .= renderNode($child, false);}
+                $html .= '</ul></li>';
+              }
 
-      $html .= '<a href="#' . $node->slug . '" class="" data-toggle="collapse">' . $node->title . '<span class="pull-right">↓</span></a>';
+              return $html;
+            } ?>
 
-      $html .= '<ul class="list-group list-group-collapse collapse" id="' . $node->slug . '">';
-
-      foreach($node->children as $child){
-        $html .= renderNode($child, false);
-      }
-
-      $html .= '</ul></li>';
-    }
-
-    return $html;
-   } ?>
-
-<br>
-<div class="o-catalog">
-	  <ul class="list-group">
-            <?php foreach(Catalog::tree() as $node) echo renderNode($node); ?>
-          </ul>
-
+            <div class="o-catalog pull-left">
+          	  <ul class="list-group">
+                <?php foreach(Catalog::tree() as $node) echo renderNode($node); ?>
+              </ul>
+            </div>
+          </div>
         </div>
-</div>
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <?= $cat->pages() ?>
           </div>
         </div>
       </div>
-
-      <div class="row">
-        <div class="col-md-8 text-center">
-          <?= $cat->pages() ?>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
